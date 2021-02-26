@@ -5,7 +5,7 @@ ForgeRock Demonstration Platform : **UMA Client Proxy** : A gateway and "REST pr
 A typical UMA client flow has the following steps: 
 
 1. The **Requesting Party** (using the Client Application) makes a request to obtain the "resource", from the **Resource Server**. The **Resource Server** returns a `Permission Ticket` because of either a missing or invalid `Requesting Party Token (RPT)`.
-1. The **Requesting Party** needs to authenticated with the **Authorization Server** and obtain an OAuth `authorization code`.
+1. The **Requesting Party** needs to authenticate with the **Authorization Server** and obtain an OAuth `authorization code`.
 1. The `authorization code` and the Client OAuth credentials are used to obtain a `Claim Token` from the **Authorization Server**.
 1. Using the `Permission Ticket` and the `Claim Token` ... the `Requesting Party Token (RPT)` is obtained from the **Authorization Server**.
 1. With a valid `Requesting Party Token (RPT)` ... the request for the "resource" is re-submitted to the **Resource Server**.  The "resource" is returned.
@@ -38,8 +38,8 @@ This repository supports multiple sub-projects:
 
 | Name | Description |
 | ---- | ----------- |
-| `gateway` | The core logic for processing the UMA Client flow and supports caching.  The output is a JAR file provides Java classes that can be used by stand-alone REST service or embedded into an existing service. |
-| `proxy` | The REST web service that provides the simplified interface for the **UMA Client Application**.  This project leverages the `gateway` project. 
+| `gateway` | The core logic for processing the UMA Client flow and supports caching.  The output is a JAR file which provides Java classes that can be used by a stand-alone REST service or embedded into an existing service. |
+| `proxy` | The REST web service that provides the simplified interface for the **UMA Client Application**.  This project leverages the `gateway` project. |
 
 # Requirements
 
