@@ -12,9 +12,10 @@ A typical UMA client flow has the following steps:
 
 Each UMA **Requesting Party** Client Application will need to implement all of these steps to support the UMA flow.  The **UMA Client Proxy** simplifies Client Application development.  A single REST call is made. The **UMA Client Proxy** can cache `Requesting Party Tokens (RPT)` for improved performance.
 
-| Direct Client flow | | Proxy flow |
-| ------ | ----- | ---- |
-| ![overview image](images/flow.png) | <&nbsp;-&nbsp;-&nbsp;-&nbsp;> | ![overview image](images/overview.png) |
+| Direct Client flow | Proxy flow |
+| ------ | ---- |
+| ![overview image](images/flow.png) | ![overview image](images/overview.png) |
+
 `git clone https://github.com/ForgeRock/frdp-uma-client-proxy.git`
 
 # Disclaimer
