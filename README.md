@@ -79,7 +79,42 @@ find ~/.m2/repository/com/forgerock/frdp/frdp-uma-client-gateway
 /home/forgerock/.m2/repository/com/forgerock/frdp/frdp-uma-client-gateway/maven-metadata-local.xml
 ```
 
+### Testing:
+
+Use the `TestGateway.java` program to confirm the gateway is configured and operational.  There **must** be a properly configured **Authorization Server** and **Resource Server**.  Edit the `target/classes/gateway.properties` file to match the deployed servers.  You will need to set the following properties:
+
+#### Resource Server connection 
+
+- `rs.connect.protocol http`
+- `rs.connect.host rs.example.com`
+- `rs.connect.port 8090`
+
+#### Authorization Server connection
+
+- `as.connect.protocol http`
+- `as.connect.host as.example.com`
+- `as.connect.port 8080`
+
+#### Authorization Server OAuth Client 
+
+- `as.oauth2.client.id UMA-RqP`
+- `as.oauth2.client.secret password`
+- `as.oauth2.client.redirect http://rqp.example.com/requesting-party`
+
+Run the `test.sh` script which sets the Java classpath and runs the `TestGateway` program:
+
+```bash
+./test.sh 
+Feb 26, 2021 11:02:24 AM com.forgerock.frdp.uma.client.CachingGateway$CacheCleaner <init>
+INFO: com.forgerock.frdp.uma.client.CachingGateway$CacheCleaner created
+...
+```
+
 ## Proxy:
+
+### Installation:
+
+#### Compile and Package:
 
 Run *Maven* (`mvn`) processes to clean, compile and package the war file:
 
@@ -88,7 +123,7 @@ cd proxy
 mvn clean compile package
 ```
 
-The *package* process creates a deployable war file, in the current directory: ./target/uma-proxy.war:
+The *package* process creates a deployable war file, in the current directory: ./target:
 
 ```bash
 ls -la ./target
@@ -100,3 +135,44 @@ drwxr-xr-x   3 scott.fehrman  staff        96 Feb 25 21:05 maven-archiver
 drwxr-xr-x   5 scott.fehrman  staff       160 Feb 25 21:05 uma-proxy
 -rw-r--r--   1 scott.fehrman  staff  10772167 Feb 25 21:05 uma-proxy.war
 ```
+
+#### Deploy war file:
+
+Copy the `uma-proxy.war` file to the `webapps` folder in the Tomcat server installation.  The running Tomcat server will automatically unpack the war file.
+
+```bash
+cp ./target/uma-proxy.war TOMCAT_INSTALLATION/webapps
+```
+
+The deployed proxy service needs to be configured for the **Authorization Server** and **Resource Server**. Edit the `proxy.properties` file:
+
+```bash
+cd TOMCAT_INSTALLATION/webapps/content-server/WEB-INF/config
+vi proxy.properties
+```
+
+You will need to verify / update these properties:
+
+- `rs.connect.protocol`
+- `rs.connect.host`
+- `rs.connect.port`
+- `as.connect.protocol`
+- `as.connect.host`
+- `as.connect.port`
+- `as.oauth2.client.id`
+- `as.oauth2.client.secret `
+- `as.oauth2.client.redirect`
+
+Restart the Tomcat server
+
+### Test
+
+The deployed `uma-proxy` service has a home page `http://FQDN/uma-proxy` with curl examples.  The examples cover the following UMA Proxy end-points:
+
+| Name | Method | URL |
+| ---- | ------ | --- |
+| Shared with me | GET | `https://FQDN/uma-proxy/rest/share/withme` |
+| Discoverable | GET | `https://FQDN/uma-proxy/rest/share/owners/__OWNER__/discover` |
+| Get Resource | GET | `https://FQDN/uma-proxy/rest/share/resources/__RESOURCEID__/?scopes=content` |
+| Revoke my access | DELETE | `https://FQDN/uma-proxy/rest/share/resources/__RESOURCEID__/policy` |
+
