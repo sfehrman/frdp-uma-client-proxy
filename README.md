@@ -67,6 +67,17 @@ Run *Maven* (`mvn`) processes to clean, compile and install the jar file:
 cd gateway
 mvn clean compile install
 ```
+Packages are added to the user's home folder:
+
+```bash
+find ~/.m2/repository/com/forgerock/frdp/frdp-uma-client-gateway
+/home/forgerock/.m2/repository/com/forgerock/frdp/frdp-uma-client-gateway
+/home/forgerock/.m2/repository/com/forgerock/frdp/frdp-uma-client-gateway/1.1.0
+/home/forgerock/.m2/repository/com/forgerock/frdp/frdp-uma-client-gateway/1.1.0/frdp-uma-client-gateway-1.1.0.jar
+/home/forgerock/.m2/repository/com/forgerock/frdp/frdp-uma-client-gateway/1.1.0/_remote.repositories
+/home/forgerock/.m2/repository/com/forgerock/frdp/frdp-uma-client-gateway/1.1.0/frdp-uma-client-gateway-1.1.0.pom
+/home/forgerock/.m2/repository/com/forgerock/frdp/frdp-uma-client-gateway/maven-metadata-local.xml
+```
 
 ## Proxy:
 
@@ -77,3 +88,15 @@ cd proxy
 mvn clean compile package
 ```
 
+The *package* process creates a deployable war file, in the current directory: ./target/uma-proxy.war:
+
+```bash
+ls -la ./target
+total 21040
+drwxr-xr-x   6 scott.fehrman  staff       192 Feb 25 21:05 .
+drwxr-xr-x  10 scott.fehrman  staff       320 Feb 25 21:05 ..
+drwxr-xr-x   3 scott.fehrman  staff        96 Feb 25 21:05 classes
+drwxr-xr-x   3 scott.fehrman  staff        96 Feb 25 21:05 maven-archiver
+drwxr-xr-x   5 scott.fehrman  staff       160 Feb 25 21:05 uma-proxy
+-rw-r--r--   1 scott.fehrman  staff  10772167 Feb 25 21:05 uma-proxy.war
+```
