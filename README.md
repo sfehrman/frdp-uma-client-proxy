@@ -153,15 +153,15 @@ vi proxy.properties
 
 You will need to verify / update these properties:
 
-- `rs.connect.protocol`
-- `rs.connect.host`
-- `rs.connect.port`
-- `as.connect.protocol`
-- `as.connect.host`
-- `as.connect.port`
-- `as.oauth2.client.id`
-- `as.oauth2.client.secret `
-- `as.oauth2.client.redirect`
+- `rs.connect.protocol http`
+- `rs.connect.host rs.example.com`
+- `rs.connect.port 8090`
+- `as.connect.protocol http`
+- `as.connect.host as.example.com`
+- `as.connect.port 8080`
+- `as.oauth2.client.id UMA-RqP`
+- `as.oauth2.client.secret password`
+- `as.oauth2.client.redirect http://rqp.example.com/requesting-party`
 
 Restart the Tomcat server
 
