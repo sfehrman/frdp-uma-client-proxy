@@ -49,6 +49,7 @@ RUN rm -rf /usr/local/tomcat/webapps/*
 
 COPY --from=build /frdp-uma-client-proxy/target/uma-proxy /usr/local/tomcat/webapps/uma-proxy
 
-EXPOSE 8095:8080
+# EXPOSE 8095:8080
+EXPOSE 8080
 
 CMD ["catalina.sh", "run"]
