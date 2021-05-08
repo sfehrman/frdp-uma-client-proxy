@@ -70,13 +70,13 @@ mvn clean compile install
 Packages are added to the user's home folder:
 
 ```bash
-find ~/.m2/repository/com/forgerock/frdp/frdp-uma-client-gateway
-/home/forgerock/.m2/repository/com/forgerock/frdp/frdp-uma-client-gateway
-/home/forgerock/.m2/repository/com/forgerock/frdp/frdp-uma-client-gateway/1.2.0
-/home/forgerock/.m2/repository/com/forgerock/frdp/frdp-uma-client-gateway/1.2.0/frdp-uma-client-gateway-1.2.0.jar
-/home/forgerock/.m2/repository/com/forgerock/frdp/frdp-uma-client-gateway/1.2.0/_remote.repositories
-/home/forgerock/.m2/repository/com/forgerock/frdp/frdp-uma-client-gateway/1.2.0/frdp-uma-client-gateway-1.2.0.pom
-/home/forgerock/.m2/repository/com/forgerock/frdp/frdp-uma-client-gateway/maven-metadata-local.xml
+find ~/.m2/repository/com/forgerock/frdp/uma/client-gateway
+/home/forgerock/.m2/repository/com/forgerock/frdp/uma/client-gateway
+/home/forgerock/.m2/repository/com/forgerock/frdp/uma/client-gateway/maven-metadata-local.xml
+/home/forgerock/.m2/repository/com/forgerock/frdp/uma/client-gateway/1.2.0
+/home/forgerock/.m2/repository/com/forgerock/frdp/uma/client-gateway/1.2.0/client-gateway-1.2.0.jar
+/home/forgerock/.m2/repository/com/forgerock/frdp/uma/client-gateway/1.2.0/client-gateway-1.2.0.pom
+/home/forgerock/.m2/repository/com/forgerock/frdp/uma/client-gateway/1.2.0/_remote.repositories
 ```
 
 ### Testing:
