@@ -147,7 +147,7 @@ cp ./target/uma-proxy.war TOMCAT_INSTALLATION/webapps
 The deployed proxy service needs to be configured for the **Authorization Server** and **Resource Server**. Edit the `proxy.properties` file:
 
 ```bash
-cd TOMCAT_INSTALLATION/webapps/content-server/WEB-INF/config
+cd TOMCAT_INSTALLATION/webapps/uma-proxy/WEB-INF/config
 vi proxy.properties
 ```
 
